@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- 'this' inline refers to 'p' element -->
+        <p onclick="this.innerText = 'You clicked!'">Don't click me.</p>
+    </head>
+    <body>
+        <script>
+            const myObj = {
+                name: 'Abdul Kuddus',
+                getFullName: function(){
+                    console.log(this);
+                    return 'Mr. ' + this.name;
+                }
+            }
+            // myObj.getFullName();
+
+            const anotherObj = {
+                name: 'Biddut Ali'
+            }
+
+            // anotherObj.getFullName = myObj.getFullName;
+            // console.log(anotherObj.getFullName);
+
+            // myObj.getFullName();
+            // anotherObj.getFullName();
+
+            // if 'this' called in a function without any object, then 'this' refers to the global object i.e. window object as below
+            function add(a, b) {
+                console.log(this);
+                return a + b;
+            }
+            // nothing before dot, then 'this' refers to window
+            add();
+
+            // if there is something before dot, 'this' refers to that object. below 'this' refers to anotherObj
+            anotherObj.sum = add;
+            anotherObj.sum();
+        </script>
+    </body>
+</html>
